@@ -144,7 +144,8 @@ else :
                      </div>
                   </div>
                   <?php 
-                     $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations"];
+                    // $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations"];
+                     $taxonomies = [ "destinazioni" => "Destinations"];
                      foreach ($taxonomies as $key => $value) :
                         $terms = get_terms(['taxonomy'   => $key,'hide_empty' => true]);
                         if ( !empty($terms) ) :
