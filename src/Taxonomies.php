@@ -64,6 +64,30 @@ class Taxonomies {
                 'assign_terms' => 'edit_posts',
             ),
         ]);
+
+        register_taxonomy("tipo di vacanza", ["post"], [
+            'hierarchical' => true,
+            'labels' => array(
+                'name' => 'tipo-di-vacanza',
+                'singular_name' => 'tipo-di-vacanza',
+                'search_items' => 'Cerca tra i tipi di vacanza',
+                'all_items' => 'Tutti i tipi di vacanza',
+                'edit_item' => 'Modifica i tipi di vacanza',
+                'update_item' => 'Aggiorna i tipi di vacanza',
+                'add_new_item' => 'Aggiungi il tipo di vacanza',
+                'new_item_name' => 'Nuovo  tipi di vacanza',
+                'menu_name' => 'tipo di vacanza',
+            ),
+            'show_ui' => true,
+            'show_in_rest' => true,
+            'query_var' => true,
+            'capabilities' => array(
+                'manage_terms' => 'manage_categories',
+                'edit_terms' => 'manage_categories',
+                'delete_terms' => 'manage_categories',
+                'assign_terms' => 'edit_posts',
+            ),
+        ]);
         
     }
 
