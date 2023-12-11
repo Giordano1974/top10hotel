@@ -1,5 +1,5 @@
 on: push
-name: 🚀 Deploy website on push
+name: 🚀 Deploy top10hotel.it
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -13,4 +13,4 @@ jobs:
       with:
         server: ftp.top10hotel.it
         username: 1368623@aruba.it
-        password: ${{ secrets.ftp_password }}
+        password: Massimougo1!
