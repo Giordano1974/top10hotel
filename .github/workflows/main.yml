@@ -12,5 +12,5 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftp.top10hotel.it
-        username: g.zannoni
-        password: ${{ secrets.ftp_password }}
+        username: ${{ secrets.FTP_Aruba.username }}
+        password: ${{ secrets.FTP_Aruba.password }}
