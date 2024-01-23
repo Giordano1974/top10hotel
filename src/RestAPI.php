@@ -41,13 +41,17 @@ class RestAPI {
 
         $articles = '';
 
+
         while ( $query->have_posts() ) {
             $query->the_post();
-            $time = do_shortcode('[rt_reading_time]');
-            $article = '<article class="mega-menu-post post-' . get_the_ID() . ' post type-post status-publish format-standard has-post-thumbnail hentry category-' . $taxonomy . ' entry">';
-            $article .= '<div class="entry-media"><div class="post-thumbnail"><a href="' . get_permalink() . '" aria-hidden="true"><img width="360" height="360" src="' . get_the_post_thumbnail_url( get_the_ID(), 'post-thumbnail' ) . '" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" /></a></div></div>';
+            $time = get_field('tempo_lettura');
+            $time_label = !empty($time) ? '<span class="entry-time">'. $time .' min</span>' : '';
+            $previewImage = get_the_post_thumbnail_url( get_the_ID())? get_the_post_thumbnail_url( get_the_ID(), 'post-thumbnail' ) : wp_get_attachment_image_src( '424', 'post-thumbnail' );
+            $article = '<article class="mega-menu-post restApi post-' . get_the_ID() . ' post type-post status-publish format-standard has-post-thumbnail hentry category-' . $taxonomy . ' entry">';
+            $article .= '<div class="entry-media"><div class="post-thumbnail"><a href="' . get_permalink() . '" aria-hidden="true"><img width="360" height="360" src="' . $previewImage . '" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" /></a></div></div>';
             $article .= '<header class="entry-header">';
-            $article .= '<h3 class="entry-title"><a href="' . get_permalink() . '" title="' . get_the_title() . '" rel="bookmark">' . get_the_title() . '</a></h3><span class="entry-time">'. $time .' min</span>';
+            $article .= '<h3 class="entry-title"><a href="' . get_permalink() . '" title="' . get_the_title() . '" rel="bookmark">' . get_the_title() . '</a></h3>';
+            $article .= $time_label;
             $article .= '</header>';
             $article .= '</article>';
             $articles .= $article;

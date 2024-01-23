@@ -1,4 +1,4 @@
-<div class="main-posts tripp-posts posts-type-post posts-style-text-overlay posts-layout-grid is-ajax-pagination">
+<div class="archive-partial main-posts tripp-posts posts-type-post posts-style-text-overlay posts-layout-grid is-ajax-pagination">
     <div class="posts-list grid-columns has-3-columns">
         <?php
         if (have_posts()) :
@@ -9,6 +9,7 @@
                 $destinazione_link = (isset( $destinazioni)) ? get_term_link($destinazioni[0]->term_id) : "#";
                 $paesaggio = (isset( $paesaggi)) ? $paesaggi[0]->name : "#";
                 $paesaggio_link = (isset( $paesaggi)) ? get_term_link($paesaggi[0]->term_id) : "#";
+                $tempo_lettura = get_field('tempo_lettura', $post->ID);
             ?>
             <article class="post type-post status-publish has-post-thumbnail hentry entry">
                 <div class="entry-media">
@@ -36,23 +37,25 @@
                             <div>
                                 <span class="meta-category term-links">
                                     <strong>In</strong>
-                                    <a href="<?php echo $paesaggio_link;?>" title="Coast" rel="category tag"><?php echo $paesaggio;?></a>
+                                    <a href="<?php echo $paesaggio_link;?>" title="<?php echo $paesaggio;?>" rel="category tag"><?php echo $paesaggio;?></a>
                                 </span>
                             </div>
                             <div>
                                 <span class="meta-date">
                                     <time class="entry-date published" datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date(); ?></time>
                                 </span>
-                                <span class="meta-reading-time">
-                                    <i class="flext-ico-date"></i><?php echo do_shortcode('[rt_reading_time]'); ?>&nbsp;min                                    
-                                </span>
+                                <?php if (!empty($tempo_lettura)) { ?>
+                                    <span class="meta-reading-time">
+                                        <i class="flext-ico-date"></i><?php echo $tempo_lettura; ?>&nbsp;min                                    
+                                    </span>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="card-social">
                             <div class="social-handler-btn">
                                 <button class="social-hover" aria-label="<?php echo _e('condividi_contenuto', 'top10hotel');?>"><i class="flext-ico-share"></i>
                                 </button>
-                                <div class="entry-buttons"><?php echo do_shortcode('[Sassy_Social_Share url="https://www.top10hotel.it/"]') ?></div>
+                                <div class="entry-buttons"><?php echo do_shortcode('[Sassy_Social_Share url="' . get_permalink() . '"]') ?></div>
                             </div>                                          
                         </div>
                     </footer>

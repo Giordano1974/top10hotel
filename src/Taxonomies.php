@@ -46,12 +46,12 @@ class Taxonomies {
             'labels' => array(
                 'name' => 'destinazioni',
                 'singular_name' => 'destinazioni',
-                'search_items' => 'Cerca tra i destinazioni',
-                'all_items' => 'Tutti i destinazioni',
-                'edit_item' => 'Modifica i destinazione',
-                'update_item' => 'Aggiorna i destinazione',
-                'add_new_item' => 'Aggiungi il destinazione',
-                'new_item_name' => 'Nuovo  destinazione',
+                'search_items' => 'Cerca tra le destinazioni',
+                'all_items' => 'Tutte le destinazioni',
+                'edit_item' => 'Modifica le destinazioni',
+                'update_item' => 'Aggiorna le destinazioni',
+                'add_new_item' => 'Aggiungi destinazione',
+                'new_item_name' => 'Nuova  destinazione',
                 'menu_name' => 'Destinazioni',
             ),
             'show_ui' => true,
@@ -65,18 +65,18 @@ class Taxonomies {
             ),
         ]);
 
-        register_taxonomy("tipo di vacanza", ["post"], [
+        register_taxonomy("tipo-di-vacanza", ["post"], [
             'hierarchical' => true,
             'labels' => array(
-                'name' => 'tipo-di-vacanza',
-                'singular_name' => 'tipo-di-vacanza',
+                'name' => 'Tipo di vacanza',
+                'singular_name' => 'Tipo di vacanza',
                 'search_items' => 'Cerca tra i tipi di vacanza',
                 'all_items' => 'Tutti i tipi di vacanza',
                 'edit_item' => 'Modifica i tipi di vacanza',
                 'update_item' => 'Aggiorna i tipi di vacanza',
                 'add_new_item' => 'Aggiungi il tipo di vacanza',
                 'new_item_name' => 'Nuovo  tipi di vacanza',
-                'menu_name' => 'tipo di vacanza',
+                'menu_name' => 'Tipo di vacanza',
             ),
             'show_ui' => true,
             'show_in_rest' => true,

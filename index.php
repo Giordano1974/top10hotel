@@ -49,6 +49,10 @@ else :
                               </div>
                            </div>
                         </div>
+
+
+                        <!-- MAIN ENTRIES -->
+
                         <div id="tripp-xt-block-757f2e14-1502-4d44-b6fa-da9c83b0481d" class="tripp-xt-block-posts alignwide is-style-2-columns wp-block-tripp-xt-posts">
                            <div class="posts-list" style="--tripp-xt-rows:<?php echo ($wp_query->post_count <= 3) ? "2" : "4"; ?>">
                            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); 
@@ -59,6 +63,7 @@ else :
                                     $paesaggio = (isset( $paesaggi)) ? $paesaggi[0]->name : "#";
                                     $paesaggio_link = (isset( $paesaggi)) ? get_term_link($paesaggi[0]->term_id) : "#";
                                     $gallery_images = get_field('gallery_images',get_the_ID());
+                                    $tempo_lettura = get_field('tempo_lettura',get_the_ID());
                                    
                                     $alt_text = get_post_meta( get_post_thumbnail_id() , '_wp_attachment_image_alt', true );
 
@@ -103,7 +108,7 @@ else :
                                  <div class="content-inner">
                                     <header class="entry-header">
                                        <div class="entry-meta">
-                                          <span class="meta-destination term-links"><a href="<?php echo $destinazione_link;?>" title="Canada" rel="category tag"><i class="tripp-ico-location"></i><span><?php echo $destinazione;?></span></a></span> 
+                                          <span class="meta-destination term-links"><a href="<?php echo $destinazione_link;?>" title="Leggi tutti in <?php echo $destinazione;?>" rel="category tag"><i class="tripp-ico-location"></i><span><?php echo $destinazione;?></span></a></span> 
                                        </div>
                                        <h3 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
                                     </header>
@@ -113,7 +118,10 @@ else :
                                              <span class="meta-category term-links"><?php echo _e('Explore', 'top10hotel');?>&nbsp;<a href="<?php echo $paesaggio_link;?>" title="<?php echo $paesaggio;?>" rel="category tag"><strong><?php echo $paesaggio;?></strong></a></span> 
                                           </div>
                                           <div>
-                                             <span class="meta-date"><time class="entry-date published" datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date(); ?></time></span><span class="meta-reading-time"><i class="flext-ico-date"></i><?php echo do_shortcode('[rt_reading_time]'); ?>&nbsp;min</span> 
+                                             <span class="meta-date"><time class="entry-date published" datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date(); ?></time></span>
+                                             <?php if (!empty($tempo_lettura)) { ?>
+                                                <span class="meta-reading-time"><i class="flext-ico-date"></i><?php echo $tempo_lettura; ?>&nbsp;min</span> 
+                                             <?php } ?>
                                           </div>
                                        </div>
                                        <div class="card-social">
@@ -134,7 +142,16 @@ else :
 
                            </div>
                         </div>
-                        <?php 
+
+
+                        <!-- END MAIN ENTRIES -->
+
+
+
+
+                        <!-- PAGINAZIONE -->
+
+                        <?php                       
                         
                         if ($wp_query->max_num_pages >= 2) :?>
                         <div class="wp-block-buttons flext-block-1676370607524 is-content-justification-center is-layout-flex wp-container-3">
@@ -143,9 +160,13 @@ else :
                         <?php endif;?>
                      </div>
                   </div>
+
+
+                  <!-- SLIDERS -->
+
                   <?php 
-                    // $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations"];
-                     $taxonomies = [ "destinazioni" => "Destinations"];
+                     $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations", "tipo-di-vacanza" => "holiday-type"];
+                     //$taxonomies = [ "destinazioni" => "Destinations"];
                      foreach ($taxonomies as $key => $value) :
                         $terms = get_terms(['taxonomy'   => $key,'hide_empty' => true]);
                         if ( !empty($terms) ) :

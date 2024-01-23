@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="<?php echo (pll_current_language("slug") == "it") ? 'it' : 'en'?>">
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -856,7 +856,15 @@
                         <ul id="primary-menu" class="dropdown-menu with-counters">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item"><a href="/" aria-current="page"><span class="menu-text">Home</span></a></li>
                             <?php 
-                            $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations"];
+                            $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations", "tipo-di-vacanza" => "holiday-type"];
+                            $args = array(
+                                'public'   => true,
+                                '_builtin' => false
+                                
+                                ); 
+                            //$output = 'names'; // or objects
+                            //$operator = 'and'; // 'and' or 'or'
+                            //$taxonomies = get_taxonomies( $args, $output, $operator );
                             foreach ($taxonomies as $key => $value) :
                                 $terms = get_terms(['taxonomy'   => $key,'hide_empty' => true]);
                                 if ( !empty($terms) ) :
@@ -870,7 +878,7 @@
                                     </div>
                                     <ul class="sub-menu">
                                         <?php foreach( $terms as $term) : ?>
-                                        <li id="menu-item-<?php echo $term->term_id;?>" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-<?php echo $term->term_id;?>"><a title="<?php echo $term->name;?>" href="<?php echo get_term_link($term->term_id);?>"><span class="menu-text"><?php echo $term->name;?></span></a></li>
+                                        <li id="menu-item-<?php echo $term->term_id;?>" class="sub-menu__item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-<?php echo $term->term_id;?>"><a title="leggi tutti in <?php echo $term->name;?>" href="<?php echo get_term_link($term->term_id);?>"><span class="menu-text"><?php echo $term->name;?></span></a></li>
                                         <?php endforeach;?>
                                     </ul>
                                 </li>
@@ -903,10 +911,33 @@
                   <ul class="extra-menu">
                      <!--li class="menu-item-sidebar"><a class="sidebar-button" href="#" aria-label="Show/Hide Sidebar"><i class="tripp-ico-more"></i></a></!li -->
                      <li class="menu-item-search"><a class="live-search-button" href="#" aria-label="Mostra/nascondi ricerca"><i class="tripp-ico-search"></i></a></li>
-                     <!-- <li class="menu-lang">                    
-                        <a class="menu-item-lang menu-item-lang--eng <?php echo (pll_current_language("slug") == "it") ? 'active' : ''?>" href="<?php echo  pll_home_url("en");?>" title="<?php echo _e('cambia_in_inglese', 'top10hotel');?>" aria-label="<?php echo _e('cambia_in_inglese', 'top10hotel');?>"><img src="/wp-content/themes/top10hotel/images/flag-england-80x80.png" width="25" height="25" alt="inglese"/></a>
-                        <a class="menu-item-lang menu-item-lang--ita <?php echo (pll_current_language("slug") == "en") ? 'active' : ''?>" href="<?php echo pll_home_url("it");?>" title="<?php echo _e('cambia_in_italiano', 'top10hotel');?>" aria-label="<?php echo _e('cambia_in_italiano', 'top10hotel');?>"><img src="/wp-content/themes/top10hotel/images/flag-italy-80x80.png" width="25" height="25" alt="italiano"/></a>
-                     </li> -->
+
+                     <!-- toggle lingue -->
+                     <?php
+                     $lang = (pll_current_language("slug") == "it") ? "it" : "en";
+                        if (is_home()){
+                            $currentURL = $_SERVER['REQUEST_URI'];
+                            $url = ($lang == "it") ? "https://www.top10hotel.it/en/" : "https://www.top10hotel.it/";
+                        }
+
+                        if (is_archive()){
+                            $lang_term_id = ($lang == "it") ? pll_get_term(get_queried_object()->term_id, 'en') : pll_get_term(get_queried_object()->term_id, 'it');
+                            $url = get_term_link($lang_term_id);
+                        }
+                        
+                        if (is_single()){
+                            global $post; 
+                            $lang_post_id = ($lang == "it") ? pll_get_post($post->ID, 'en') :pll_get_post($post->ID, 'it');
+                            $url = get_permalink($lang_post_id);
+                        }
+                        
+                        ?>
+                     <li class="menu-lang">                    
+                        <a class="menu-item-lang menu-item-lang--eng <?php echo ($lang == "it") ? 'active' : ''?>" href="<?php echo $url;?>" title="<?php echo _e('cambia_in_inglese', 'top10hotel');?>" aria-label="<?php echo _e('cambia_in_inglese', 'top10hotel');?>"><img src="/wp-content/themes/top10hotel/images/flag-england-80x80.png" width="25" height="25" alt="inglese"/></a>
+                        <a class="menu-item-lang menu-item-lang--ita <?php echo ($lang == "en") ? 'active' : ''?>" href="<?php echo $url;?>" title="<?php echo _e('cambia_in_italiano', 'top10hotel');?>" aria-label="<?php echo _e('cambia_in_italiano', 'top10hotel');?>"><img src="/wp-content/themes/top10hotel/images/flag-italy-80x80.png" width="25" height="25" alt="italiano"/></a>
+                     </li>
+
+
                      <li class="menu-item-dark-mode"><a class="dark-mode-button" href="#" aria-label="Switch dark mode"><i class="tripp-ico-dark"></i></a></li>
                   </ul>
                   <button type="button" class="menu-button" aria-label="Show Menu">
@@ -950,7 +981,7 @@
                             </div>
                             <ul class="sub-menu">
                                 <?php foreach( $terms as $term) : ?>
-                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-<?php echo $term->term_id;?>"><a href="<?php echo get_term_link($term->term_id);?>"><?php echo $term->name;?></a><button class="sub-menu-button" aria-label="Open Submenu"></button></li>
+                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-<?php echo $term->term_id;?>"><a href="<?php echo get_term_link($term->term_id);?>"><?php echo $term->name;?></a><button class="sub-menu-button" aria-label="Apri Sottomenu"></button></li>
                                 <?php endforeach;?>
                             </ul>
                         </li>

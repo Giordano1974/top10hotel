@@ -59,7 +59,7 @@ class Ajax {
                     'items' => $articles
                 )
             ),
-            'moreLink' => '<a href="https://tripptheme.com/tripp2/search/ultima/">See more results for "ultima"</a>'
+            'moreLink' => '<a href="'.pll_home_url().'search/'.$keyword.'/">'. __('see_more_results_for', 'top10hotel').' '.$keyword.'</a>'
         );
     
         // Invia la risposta JSON
