@@ -1622,7 +1622,7 @@ updateSearchList(){flextension.emit('liveSearch.updateResults')}
 getListItems(name,items){const list=document.createElement('ul');list.classList.add('flext-list');list.setAttribute('id',name.toLowerCase()+'-search-list');let showThumbnail=!1;let showAuthor=!1;let showDate=!1;items.forEach(item=>{let thumbnail='';if(item.thumbnail){showThumbnail=!0;thumbnail='<img src="'+item.thumbnail+'" alt="'+item.title+'" height="150" width="150" />'}else{thumbnail='<i class="flext-ico-article"></i>'}
 thumbnail='<span class="item-thumbnail">'+thumbnail+'</span>';let author='';if(item.author){showAuthor=!0;author='<span>'+item.author+'</span> '}
 let date='';if(item.date){showDate=!0;date='<span>'+item.date+'</span> '}
-let description='';if(author||date){description='<span class="item-meta">'+author+date+'</span>'}
+let description='';if(author||date){description='<span class="item-meta">'+date+'</span>'}
 let title=item.title;if(title){title='<strong class="item-title">'+title+'</strong>'}
 const listItem=document.createElement('li');listItem.innerHTML='<a href="'+item.post_link+'">'+thumbnail+'<span class="item-header">'+title+description+'</span></a>';list.append(listItem)});if(showThumbnail){list.classList.add('flext-avatar-list')}
 if(showAuthor||showDate){list.classList.add('flext-list-two-line')}

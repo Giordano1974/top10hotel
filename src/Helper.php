@@ -36,7 +36,7 @@ class Helper {
             // Pulsante "Successivo"
             if ($current_page < $total_pages) {
                 echo '<a class="next page-numbers ajax-page" href="' . get_pagenum_link($current_page + 1) . '">';
-                echo '<span>Older</span>';
+                echo '<span>' . _e("right_btn_pagination", "top10hotel") .'</span>';
                 echo '<i class="tripp-ico-right"></i>';
                 echo '</a>';
             }

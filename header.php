@@ -856,15 +856,16 @@
                         <ul id="primary-menu" class="dropdown-menu with-counters">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item"><a href="/" aria-current="page"><span class="menu-text">Home</span></a></li>
                             <?php 
-                            $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations", "tipo-di-vacanza" => "holiday-type"];
-                            $args = array(
-                                'public'   => true,
-                                '_builtin' => false
-                                
-                                ); 
-                            //$output = 'names'; // or objects
-                            //$operator = 'and'; // 'and' or 'or'
-                            //$taxonomies = get_taxonomies( $args, $output, $operator );
+                            //$taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations", "tipo-di-vacanza" => "holiday-type"];
+                            $taxonomies = [ "tipo-di-vacanza" => "holiday-type", "destinazioni" => "Destinations", "budget" => "budget"];
+                            // $args = array(
+                            //     'public'   => true,
+                            //     '_builtin' => false                                
+                            // ); 
+                            // $output = 'names'; // or objects
+                            // $operator = 'and'; // 'and' or 'or'
+                            // $taxonomies = get_taxonomies( $args, $output, $operator );
+                            
                             foreach ($taxonomies as $key => $value) :
                                 $terms = get_terms(['taxonomy'   => $key,'hide_empty' => true]);
                                 if ( !empty($terms) ) :

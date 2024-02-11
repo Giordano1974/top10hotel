@@ -165,7 +165,7 @@ else :
                   <!-- SLIDERS -->
 
                   <?php 
-                     $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations", "tipo-di-vacanza" => "holiday-type"];
+                     $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations", "tipo-di-vacanza" => "holiday-type", "budget" => "budget"];
                      //$taxonomies = [ "destinazioni" => "Destinations"];
                      foreach ($taxonomies as $key => $value) :
                         $terms = get_terms(['taxonomy'   => $key,'hide_empty' => true]);

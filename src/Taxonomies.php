@@ -88,6 +88,30 @@ class Taxonomies {
                 'assign_terms' => 'edit_posts',
             ),
         ]);
+
+        register_taxonomy("budget", ["post"], [
+            'hierarchical' => true,
+            'labels' => array(
+                'name' => 'budget',
+                'singular_name' => 'budget',
+                'search_items' => 'Cerca tra budget',
+                'all_items' => 'Tutti i budget',
+                'edit_item' => 'Modifica budget',
+                'update_item' => 'Aggiorna budget',
+                'add_new_item' => 'Aggiungi budget',
+                'new_item_name' => 'Nuovo budget',
+                'menu_name' => 'Budget',
+            ),
+            'show_ui' => true,
+            'show_in_rest' => true,
+            'query_var' => true,
+            'capabilities' => array(
+                'manage_terms' => 'manage_categories',
+                'edit_terms' => 'manage_categories',
+                'delete_terms' => 'manage_categories',
+                'assign_terms' => 'edit_posts',
+            ),
+        ]);
         
     }
 

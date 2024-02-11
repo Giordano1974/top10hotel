@@ -9,7 +9,6 @@ if (have_posts()) :
         $destinazione_link = (isset( $destinazioni)) ? get_term_link($destinazioni[0]->term_id) : "#";
         $paesaggio = (isset( $paesaggi)) ? $paesaggi[0]->name : "#";
         $paesaggio_link = (isset( $paesaggi)) ? get_term_link($paesaggi[0]->term_id) : "#";
-        $blocks = get_field( "nome_hotel" );
         $language = apply_filters( 'wpml_current_language', null );
         $post_status = get_post_status();
         $tempo_lettura = get_field('tempo_lettura')
@@ -85,7 +84,7 @@ if (have_posts()) :
                             $nomeHotel = get_sub_field('nome_hotel');
                             $sottotitoloHotel = get_sub_field('sottotitolo_hotel');
                             $hidHotel = get_sub_field('id_hotel');
-                            $imgHotel = get_sub_field('immagine_hotel');
+                            $imgHotel = get_sub_field('immagine_hotel');                            
                             $descrizioneHotel = get_sub_field('descrizione_hotel');
                             $linkHotel = get_sub_field('link_hotel');
                             $photogallery = get_sub_field('photogallery');
@@ -102,7 +101,9 @@ if (have_posts()) :
                                     <div class="booking-widget"><?php echo do_shortcode('[booking_tracking lang=' . $language . ' hid=' . $hidHotel . ']'); ?></div>
                                 </div>
                                 <div class="hotel-item__image">
-                                    <a href="<?php echo $linkHotel; ?>" title="<?php echo $imgHotel["title"] ?>" target="_blank"><img src="<?php echo $imgHotel["sizes"]["mia_article"]; ?>" loading="lazy" alt="<?php echo $imgHotel["alt"] ?>"/></a>
+                                    <a href="<?php echo $linkHotel; ?>" title="<?php echo $imgHotel["title"] ?>" target="_blank">
+                                        <img src="<?php echo $imgHotel["sizes"]["mia_article"]; ?>" width="<?php echo $imgHotel["sizes"]["mia_article-width"]; ?>" height="<?php echo $imgHotel["sizes"]["mia_article-height"]; ?>" loading="lazy" decoding="async" alt="<?php echo $imgHotel["alt"] ?>"/>
+                                    </a>
                                 </div>
                                 <div class="hotel-item__photogallery">
 
@@ -174,12 +175,12 @@ if (have_posts()) :
                                 [
                                     'taxonomy' => 'paesaggi',
                                     'field'    => 'slug',
-                                    'terms'    => $paesaggi[0]->slug,
+                                    'terms'    => $paesaggio,
                                 ],
                                 [
                                     'taxonomy' => 'destinazioni',
                                     'field'    => 'slug',
-                                    'terms'    => $destinazioni[0]->slug,
+                                    'terms'    => $destinazione,
                                 ]
                             ],
                         ];
