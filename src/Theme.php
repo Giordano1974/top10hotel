@@ -35,6 +35,7 @@ class Theme {
         //add_filter( 'image_size_names_choose', [$this, 'mytheme_image_sizes'] );
 
         //add_action('wp_head', [$this, 'add_link_tag_to_home']);
+        add_action('wp_enqueue_scripts', [$this, 'my_custom_script']);
         
     }    
 
@@ -106,6 +107,14 @@ class Theme {
      */
     public function wpdocs_theme_setup(){
         load_theme_textdomain('wpdocs_theme', get_template_directory() . '/');
+    }
+
+    function my_custom_script() {
+        // Registra lo script
+        wp_register_script('my-script', get_template_directory_uri() . '/js/custom.js', array(), null, true);
+    
+        // Enqueue lo script
+        wp_enqueue_script('my-script');
     }
 }
 

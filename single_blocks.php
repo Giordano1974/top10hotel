@@ -58,7 +58,7 @@ if (have_posts()) :
                         </div>
                     </header>
                     <div class="content-index tripp-container">
-                        <span><strong>In questo articolo troverai informazioni su questi hotel</strong></span>
+                        <span><strong><?php echo _e('index-title', 'top10hotel');?></strong></span>
                         <nav class="content-index__menu" role="menu">
                             <ul>
                                 <?php while( have_rows('aggiungi_hotel') ): the_row(); 

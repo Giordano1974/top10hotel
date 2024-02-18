@@ -843,6 +843,10 @@
          </div>
       </div>
       <div id="page" class="site">
+        <?php
+            $taxonomies = [ "tipo-di-vacanza", "destinazioni", "budget", "ajax"];
+            $lang_slug = (pll_current_language("slug") == "it") ? "" : "/en";
+        ?>
          <header id="site-header" class="main-header is-fullwidth-menu menu-align-center">
             <div class="main-menu">
                <div class="menu-content">
@@ -852,12 +856,12 @@
                         <h1><span class="screen-reader-text"><?php echo get_bloginfo( 'name' ) ;?></span></h1>
                     </div>
                     <nav id="site-navigation" class="main-navigation">
-                    <?php if (is_single() || is_tag() || is_tax()) :?>    
+                    <?php if (is_single() || is_tag() || is_tax() || is_page()) :?>
+                        
                         <ul id="primary-menu" class="dropdown-menu with-counters">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item current_page_item"><a href="/" aria-current="page"><span class="menu-text">Home</span></a></li>
                             <?php 
                             //$taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations", "tipo-di-vacanza" => "holiday-type"];
-                            $taxonomies = [ "tipo-di-vacanza" => "holiday-type", "destinazioni" => "Destinations", "budget" => "budget"];
                             // $args = array(
                             //     'public'   => true,
                             //     '_builtin' => false                                
@@ -866,29 +870,39 @@
                             // $operator = 'and'; // 'and' or 'or'
                             // $taxonomies = get_taxonomies( $args, $output, $operator );
                             
-                            foreach ($taxonomies as $key => $value) :
+                            foreach ($taxonomies as $key) :
                                 $terms = get_terms(['taxonomy'   => $key,'hide_empty' => true]);
                                 if ( !empty($terms) ) :
-                                ?>
-                                <li id="menu-item-<?php echo $key?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2 tripp-xt-mega-menu tripp-xt-mm-has-posts">
-                                    <a href="#"><span class="menu-text"><?php echo _e($value, 'top10hotel');?></span></a>
-                                    <div class="tripp-xt-mm-posts">
-                                        <?php foreach( $terms as $term ) : ?>
-                                        <div class="tripp-xt-mm-content" data-taxonomy="<?php echo $key;?>" data-term="<?php echo $term->term_id;?>"></div>
-                                        <?php endforeach;?>
-                                    </div>
-                                    <ul class="sub-menu">
-                                        <?php foreach( $terms as $term) : ?>
-                                        <li id="menu-item-<?php echo $term->term_id;?>" class="sub-menu__item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-<?php echo $term->term_id;?>"><a title="leggi tutti in <?php echo $term->name;?>" href="<?php echo get_term_link($term->term_id);?>"><span class="menu-text"><?php echo $term->name;?></span></a></li>
-                                        <?php endforeach;?>
-                                    </ul>
-                                </li>
-                            <?php endif;
+
+                                    if ($key != "ajax") : ?>
+
+                                    <li id="menu-item-<?php echo $key?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2 tripp-xt-mega-menu tripp-xt-mm-has-posts">
+                                        <a href="<?php echo $lang_slug;?>/<?php echo $key;?>/"><span class="menu-text"><?php echo _e($key, 'top10hotel');?></span></a>
+                                        <div class="tripp-xt-mm-posts">
+                                            <?php foreach( $terms as $term ) : ?>
+                                            <div class="tripp-xt-mm-content" data-taxonomy="<?php echo $key;?>" data-term="<?php echo $term->term_id;?>"></div>
+                                            <?php endforeach;?>
+                                        </div>
+                                        <ul class="sub-menu">
+                                            <?php foreach( $terms as $term) : ?>
+                                            <li id="menu-item-<?php echo $term->term_id;?>" class="sub-menu__item menu-item menu-item-type-taxonomy menu-item-object-category menu-item-<?php echo $term->term_id;?>"><a title="leggi tutti in <?php echo $term->name;?>" href="<?php echo get_term_link($term->term_id);?>"><span class="menu-text"><?php echo $term->name;?></span></a></li>
+                                            <?php endforeach;?>
+                                        </ul>
+                                    </li>
+
+                                <?php else: ?>
+
+                                    <li id="menu-item-<?php echo $key?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2 tripp-xt-mega-menu tripp-xt-mm-has-posts">
+                                        <button class="has-text-color wp-block-button__link ispirami" data-language="<?php echo pll_current_language("slug");?>" ><?php echo _e('suggest', 'top10hotel');?></button>
+                                    </li>
+                                <?php endif; 
+                                endif;
                             endforeach;?>  
    
                             <!--li id="menu-item-713" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-713"><a href="/about/"><span class="menu-text">About</span></a></li-->
-                     </ul>
-                     <?php endif;?>
+                        </ul>
+                    <?php endif;?>
+
                      <div class="main-search-bar">
                         <div id="flext-live-search" class="flext-live-search">
                            <form id="flext-live-search-form" class="flext-live-search-form" action="<?php echo  pll_home_url();?>" method="post">
@@ -926,7 +940,7 @@
                             $url = get_term_link($lang_term_id);
                         }
                         
-                        if (is_single()){
+                        if (is_single() || is_page()){
                             global $post; 
                             $lang_post_id = ($lang == "it") ? pll_get_post($post->ID, 'en') :pll_get_post($post->ID, 'it');
                             $url = get_permalink($lang_post_id);
@@ -969,12 +983,13 @@
                   <ul id="mobile-menu" class="vertical-menu with-counters">
                      <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-3782 current_page_item menu-item-706"><a href="/" aria-current="page">Home</a><button class="sub-menu-button" aria-label="Open Submenu"></button></li>
                      <?php
-                     foreach ($taxonomies as $key => $value) :
+                     foreach ($taxonomies as $key) :
                         $terms = get_terms(['taxonomy'   => $key,'hide_empty' => true]);
                         if ( !empty($terms) ) :
+                            if ($key != "ajax") : 
                         ?>
                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-<?php echo $key?> tripp-xt-mega-menu tripp-xt-mm-has-posts">
-                            <a href="#"><?php echo _e($value, 'top10hotel');?></a><button class="sub-menu-button" aria-label="Open Submenu"></button>
+                            <a href="<?php echo $lang_slug;?>/<?php echo $key;?>/"><?php echo _e($key, 'top10hotel');?></a><button class="sub-menu-button" aria-label="Open Submenu"></button>
                             <div class="tripp-xt-mm-posts">
                                 <?php foreach( $terms as $term ) : ?>
                                 <div class="tripp-xt-mm-content" data-taxonomy="<?php echo $key;?>" data-term="<?php echo $term->term_id;?>"></div>
@@ -986,7 +1001,13 @@
                                 <?php endforeach;?>
                             </ul>
                         </li>
-                    <?php endif;
+                    <?php else: ?>
+
+                        <li id="menu-item-<?php echo $key?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2 tripp-xt-mega-menu tripp-xt-mm-has-posts">
+                            <button class="ispirami has-text-color wp-block-button__link" data-language="<?php echo pll_current_language("slug");?>" ><?php echo _e('suggest', 'top10hotel');?></button>
+                        </li>
+                    <?php endif; 
+                    endif;
                     endforeach;?>  
                     </ul>
                   <aside class="menu-widgets">

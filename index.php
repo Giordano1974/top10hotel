@@ -21,20 +21,79 @@ else :
 ?>
          <main id="site-content" class="main-content">
             <article class="page type-page entry">
-               <div class="entry-content">
+               <div class="entry-content"> 
                   
-                  
-                  
-                  <div class="flext-block-section flext-has-background alignfull">
+                  <section class="flext-block-section flext-has-background alignfull">
                      <div class="flext-block-section-background">
-                        <img decoding="async" loading="lazy" width="1920" height="1080" class="flext-block-section-image-background" alt="immagine di background" role="presentation" src="/wp-content/uploads/2023/03/home-bg-1.png" style="object-position:48% -10%" 
+                        <img decoding="async" loading="lazy" width="1920" height="1080" alt="immagine di background" role="presentation" src="/wp-content/uploads/2023/03/home-bg-1.png" style="object-position:48% -10%" 
                            srcset="/wp-content/themes/top10hotel/images/home-bg-1.png 1920w, 
                                     /wp-content/themes/top10hotel/images/home-bg-1-300x169.png 300w, 
                                     /wp-content/themes/top10hotel/images/home-bg-1-1024x576.png 1024w, 
                                     /wp-content/themes/top10hotel/images/home-bg-1-768x432.png 768w, 
                                     /wp-content/themes/top10hotel/images/home-bg-1-1536x864.png 1536w"
                            sizes="(max-width: 1920px) 100vw, 1920px">
+                     </div>
+
+                     <?php 
+                        $taxonomies_index = [ "ajax", "tipo-di-vacanza", "destinazioni", "budget"];
+                        $lang_slug = (pll_current_language("slug") == "it") ? "" : "/en";
+                     ?>
+
+                     <div class="flext-block-section-inner">
+                        <div style="height: 100px"></div>
+
+                        <div class="flext-block-categories flext-categories is-style-carousel flext-carousel has-thumbnail alignwide wp-block-flextension-categories" data-slides-per-view="5" data-space-between="30" data-navigation="1" data-pagination="1">
+                           <div class="flext-carousel-wrapper">
+                              <?php 
+                              foreach( $taxonomies_index as $key) : 
+
+                                 if ($key == "ajax") :
+                                    $image = "https://www.top10hotel.it/wp-content/uploads/2024/02/shutterstock_1225191766-360x360.jpg";
+                                    $image_large = "https://www.top10hotel.it/wp-content/uploads/2024/02/shutterstock_1225191766-720x720.jpg";
+                                    ?>
+                                    <div class="category-item flext-slide has-thumbnail slide-ispirami">
+                                       
+                                          <img width="360" height="360" src="<?php echo $image;?>" 
+                                          class="attachment-medium size-medium" alt="<?php echo _e($key, 'top10hotel');?>" 
+                                          decoding="async" loading="lazy"  
+                                          srcset="<?php echo $image;?> 360w, 
+                                          <?php echo $image_large;?> 720w" 
+                                          sizes="(max-width: 300px) 100vw, 360px" />       
+                           
+                                          <button class="ispirami has-text-color wp-block-button__link" data-language="<?php echo pll_current_language("slug");?>"><?php echo _e('suggest', 'top10hotel');?></button>
+                                    </div>
+                                 <?php
+                                 else :
+                                 
+                                    $url = $lang_slug."/".$key."/";
+                                    $terms_count = count(get_terms(['taxonomy'   => $key,'hide_empty' => true]));
+                                    $post = get_page_by_path($key);
+                                    $image = (get_the_post_thumbnail_url($post->ID,"mia_square")) ? get_the_post_thumbnail_url($post->ID,"mia_square") : "https://www.top10hotel.it/wp-content/uploads/2023/05/social-top10hotel-360x360.png";
+                                    $image_large = (get_the_post_thumbnail_url($post->ID,"mia_square_large")) ? get_the_post_thumbnail_url($post->ID,"mia_square_large") : "https://www.top10hotel.it/wp-content/uploads/2023/05/social-top10hotel-720x720.png";
+                                    ?>
+                                       <div class="category-item flext-slide has-thumbnail">
+                                          <a href="<?php echo $url;?>">
+                                                   <img width="360" height="360" src="<?php echo $image;?>" 
+                                                   class="attachment-medium size-medium" alt="<?php echo _e($key, 'top10hotel');?>" 
+                                                   decoding="async" loading="lazy"  
+                                                   srcset="<?php echo $image;?> 360w, 
+                                                   <?php echo $image_large;?> 720w" 
+                                                   sizes="(max-width: 300px) 100vw, 360px" />       
+                                    
+                                             <span><?php echo _e($key, 'top10hotel');?></span>
+                                          </a>
+                                          <span class="posts-count"><?php echo $terms_count;?>
+                                             <span><?php echo _e('categories', 'top10hotel');?></span>
+                                          </span>
+                                       </div>
+                                    <?php
+                                 endif;   
+                                 endforeach;?>
+                           </div>
                         </div>
+                     </div>
+                  </section>
+                  <section class="flext-block-section flext-has-background alignfull">
                      <div class="flext-block-section-inner">
                         <div id="the-latest-inspiring-stories" class="wp-block-group tripp-heading-block is-layout-constrained">
                            <p class="has-text-align-center tripp-heading-title has-small-font-size flext-has-animation flext-animation-fade-down flext-animation-delay-250 flext-animation-once"><?php echo _e('section_title_occhiello', 'top10hotel');?></p>
@@ -159,57 +218,55 @@ else :
                         </div>
                         <?php endif;?>
                      </div>
-                  </div>
+                  </section>
 
 
                   <!-- SLIDERS -->
 
                   <?php 
-                     $taxonomies = [ "paesaggi" => 'Explore',"destinazioni" => "Destinations", "tipo-di-vacanza" => "holiday-type", "budget" => "budget"];
+                     $taxonomies = [ "paesaggi", "tipo-di-vacanza", "destinazioni", "budget"];
                      //$taxonomies = [ "destinazioni" => "Destinations"];
-                     foreach ($taxonomies as $key => $value) :
+                     foreach ($taxonomies as $key) :
                         $terms = get_terms(['taxonomy'   => $key,'hide_empty' => true]);
                         if ( !empty($terms) ) :
                         ?>
-                        <div class="flext-block-section flext-has-background flext-has-background-dim has-background-dim-100 alignfull">
-                        <div class="flext-block-section-background"><span class="flext-block-section-overlay-background has-surface-background-color"></span></div>
-                        <div class="flext-block-section-inner">
-                           <div class="wp-block-group tripp-heading-block is-layout-constrained">
-                              <p class="has-text-align-center tripp-heading-title has-small-font-size flext-has-animation flext-animation-fade-down flext-animation-delay-250 flext-animation-once"><?php echo _e('start_exploring', 'top10hotel');?></p>
-                              <h2 class="wp-block-heading has-text-align-center tripp-heading-headline flext-has-animation flext-animation-fly-in flext-animation-delay-125 flext-animation-once"><?php echo _e($value, 'top10hotel');?></h2>
-                              <div class="wp-block-group flext-has-animation flext-animation-fade-up flext-animation-once is-layout-constrained">
-                                 <div class="wp-block-outermost-icon-block items-justified-center">
-                                    <div class="icon-container has-icon-color has-melrose-color" style="color:#c0afff;width:48px">
-                                       <svg width="31.7" height="4.8" viewBox="0 0 31.7 4.8">
-                                          <path d="m25.5,4.8c-1.7,0-2.6-.9-3.3-1.5-.6-.6-.9-.8-1.6-.8s-1,.3-1.6.8c-.7.6-1.6,1.5-3.3,1.5s-2.6-.9-3.3-1.5c-.6-.6-.9-.8-1.6-.8s-1,.3-1.6.8c-.7.6-1.6,1.5-3.3,1.5s-2.4-.9-3.1-1.5c-.6-.6-.9-.9-1.6-.9S0,1.9,0,1.2.5,0,1.2,0c1.7,0,2.6.9,3.3,1.5.6.6.9.9,1.6.9s1-.3,1.6-.8c.7-.6,1.6-1.5,3.3-1.5s2.6.9,3.3,1.5c.5.5.8.8,1.5.8s1-.3,1.6-.8c.7-.6,1.6-1.5,3.3-1.5s2.6.9,3.3,1.5c.6.6.9.8,1.6.8s1-.3,1.6-.8c.7-.6,1.6-1.5,3.3-1.5.7,0,1.2.5,1.2,1.2s-.7,1.1-1.3,1.1c-.7,0-1,.3-1.6.8-.7.7-1.6,1.6-3.3,1.6Z"></path>
-                                       </svg>
+                        <section class="flext-block-section flext-has-background flext-has-background-dim has-background-dim-100 alignfull">
+                              <div class="flext-block-section-background"><span class="flext-block-section-overlay-background has-surface-background-color"></span></div>
+
+                              <div class="flext-block-section-inner">
+                                 <div class="wp-block-group tripp-heading-block is-layout-constrained">
+                                    <p class="has-text-align-center tripp-heading-title has-small-font-size flext-has-animation flext-animation-fade-down flext-animation-delay-250 flext-animation-once"><?php echo _e('start_exploring', 'top10hotel');?></p>
+                                    <h2 class="wp-block-heading has-text-align-center tripp-heading-headline flext-has-animation flext-animation-fly-in flext-animation-delay-125 flext-animation-once"><?php echo _e($key, 'top10hotel');?></h2>
+                                    <div class="wp-block-group flext-has-animation flext-animation-fade-up flext-animation-once is-layout-constrained">
+                                       <div class="wp-block-outermost-icon-block items-justified-center">
+                                          <div class="icon-container has-icon-color has-melrose-color" style="color:#c0afff;width:48px">
+                                             <svg width="31.7" height="4.8" viewBox="0 0 31.7 4.8">
+                                                <path d="m25.5,4.8c-1.7,0-2.6-.9-3.3-1.5-.6-.6-.9-.8-1.6-.8s-1,.3-1.6.8c-.7.6-1.6,1.5-3.3,1.5s-2.6-.9-3.3-1.5c-.6-.6-.9-.8-1.6-.8s-1,.3-1.6.8c-.7.6-1.6,1.5-3.3,1.5s-2.4-.9-3.1-1.5c-.6-.6-.9-.9-1.6-.9S0,1.9,0,1.2.5,0,1.2,0c1.7,0,2.6.9,3.3,1.5.6.6.9.9,1.6.9s1-.3,1.6-.8c.7-.6,1.6-1.5,3.3-1.5s2.6.9,3.3,1.5c.5.5.8.8,1.5.8s1-.3,1.6-.8c.7-.6,1.6-1.5,3.3-1.5s2.6.9,3.3,1.5c.6.6.9.8,1.6.8s1-.3,1.6-.8c.7-.6,1.6-1.5,3.3-1.5.7,0,1.2.5,1.2,1.2s-.7,1.1-1.3,1.1c-.7,0-1,.3-1.6.8-.7.7-1.6,1.6-3.3,1.6Z"></path>
+                                             </svg>
+                                          </div>
+                                       </div>
                                     </div>
                                  </div>
+                                 <div class="flext-block-categories flext-categories is-style-carousel flext-carousel has-thumbnail alignwide wp-block-flextension-categories" data-slides-per-view="5" data-space-between="30" data-navigation="1" data-pagination="1">
+                                    <div class="flext-carousel-wrapper <?php echo ($key == "budget") ? "carousel--budget" : "" ?>">
+                                       <?php foreach( $terms as $term) : 
+                                          $image = get_field('immagine', $key . '_' . $term->term_id);
+                                          ?>
+                                          <div class="category-item flext-slide has-thumbnail">
+                                             <a href="<?php echo get_term_link($term->term_id);?>">
+                                                   <img width="360" height="360" src="<?php echo $image["sizes"]["mia_square"];?>" 
+                                                      class="attachment-medium size-medium" alt="<?php echo $term->name;?>" 
+                                                      decoding="async" loading="lazy" 
+                                                      srcset="<?php echo $image["sizes"]["mia_square"];?> 360w, 
+                                                      <?php echo $image["sizes"]["mia_square_large"];?> 720w" 
+                                                      sizes="(max-width: 300px) 100vw, 360px" />
+                                                <span><?php echo $term->name;?></span></a><span class="posts-count"><?php echo $term->count;?><span><?php echo _e('entries', 'top10hotel');?></span></span></div>
+                                             <?php endforeach;?>
+                                    </div>
                               </div>
-                           </div>
-                           <div class="flext-block-categories flext-categories is-style-carousel flext-carousel has-thumbnail alignwide wp-block-flextension-categories" data-slides-per-view="5" data-space-between="30" data-navigation="1" data-pagination="1">
-                              <div class="flext-carousel-wrapper">
-                                 <?php foreach( $terms as $term) : 
-                                    $image = get_field('immagine', $key . '_' . $term->term_id);
-                                    ?>
-                                    <div class="category-item flext-slide has-thumbnail">
-                                       <a href="<?php echo get_term_link($term->term_id);?>">
-                                             <img width="360" height="360" src="<?php echo $image["sizes"]["mia_square"];?>" 
-                                                class="attachment-medium size-medium" alt="<?php echo $term->name;?>" 
-                                                decoding="async" loading="lazy" 
-                                                srcset="<?php echo $image["sizes"]["mia_square"];?> 360w, 
-                                                <?php echo $image["sizes"]["mia_square_large"];?> 720w" 
-                                                sizes="(max-width: 300px) 100vw, 360px" />
-                                          <span><?php echo $term->name;?></span></a><span class="posts-count"><?php echo $term->count;?><span><?php echo _e('entries', 'top10hotel');?></span></span></div>
-                                       <?php endforeach;?>
-                              </div>
-                        </div>
-                        </div>
-                  </div>
-                     <?php endif;
-                     endforeach;?>  
 
-                  
+                        </section>
+                  <?php endif; endforeach;?>                    
                </div>
             </article>
          </main>

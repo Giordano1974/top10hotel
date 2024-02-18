@@ -5,7 +5,7 @@
                      <div class="flext-instagram-feed">
                             
                      </div>
-                     <div class="footer_logo"><img width="150" height="80" src="/wp-content/themes/top10hotel/images/logo-footer.png" alt="Top 10 hotel" /></div>
+                     <div class="footer_logo"><img width="150" height="80" src="/wp-content/themes/top10hotel/images/logo.png" alt="Top 10 hotel" /></div>
                   </div>
                </div>
                <div class="footer-col-2">

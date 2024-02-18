@@ -241,12 +241,48 @@ header.main-header:not(.is-menu-visible) .main-menu {
 .content-index__menu li {
     display: flex;
     align-items: baseline;
+    margin: 12px 0;
+    justify-content: space-between;
+}
+
+.content-index__menu span {
+    min-width: 33%;
+    max-width: 33%;
 }
 
 .content-index__menu li a h4{
     margin: 0 12px 0 0;
     font-size: 1.2em;
     text-decoration: underline;
+}
+
+button.ispirami {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1em;
+    left: 10px;
+    right: 10px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.4);
+    border: 2px solid #fff;
+    color: #fff !important;
+}
+
+.menu-item button.ispirami {
+    position: static;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.4);
+    border: 1px solid #fff;
+    color: #fff !important;
+    padding: 10px;
+}
+
+.carousel--budget {
+    justify-content: center;
+}
+
+.site-logo {
+    max-width: 17rem;
 }
 
 @media all and (min-width: 1080px) {
@@ -275,5 +311,9 @@ header.main-header:not(.is-menu-visible) .main-menu {
 
     .content-index__menu li {
         flex-direction: column;
+    }
+
+    .content-index__menu span {
+        max-width: none;
     }
 }
