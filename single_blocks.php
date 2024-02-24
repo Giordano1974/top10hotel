@@ -129,7 +129,7 @@ if (have_posts()) :
                                     <p><?php echo $descrizioneHotel; ?></p>
                                 </div>                   
                                 <div class="cta-container">
-                                    <a href="<?php echo $linkHotel; ?>" title="Visita <?php echo $imgHotel["title"] ?> su Booking.com" target="_blank" class="hotel-cta fasc-button fasc-size-large fasc-type-flat fasc-rounded-medium ico-fa fasc-ico-after fa-chevron-right"><?php echo _e('vedi_info_e_tariffe', 'top10hotel');?></a>
+                                    <button style="display:none" class="text-read-more"></button><a href="<?php echo $linkHotel; ?>" title="Visita <?php echo $imgHotel["title"] ?> su Booking.com" target="_blank" class="hotel-cta fasc-button fasc-size-large fasc-type-flat fasc-rounded-medium ico-fa fasc-ico-after fa-chevron-right"><?php echo _e('vedi_info_e_tariffe', 'top10hotel');?></a>
                                 </div>
                                 
                             </section>

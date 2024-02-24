@@ -4,9 +4,9 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="profile" href="https://gmpg.org/xfn/11" />
-      <link rel="preload" href="/wp-content/themes/top10hotel/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="all" data-minify="1" />
+      <link rel="preload" href="/wp-content/themes/top10hotel/css/style.css?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'" media="all" data-minify="1" />
       <noscript>
-        <link rel="stylesheet" href="/wp-content/themes/top10hotel/css/style.css" media="all" data-minify="1" />
+        <link rel="stylesheet" href="/wp-content/themes/top10hotel/css/style.css?v=4" media="all" data-minify="1" />
       </noscript>
       <meta name='robots' content='max-image-preview:large' />
       <!-- Google tag (gtag.js) -->
@@ -759,14 +759,14 @@
       <style id='tripp-inline-css'>
          :root, .has-scheme-light, .flext-has-scheme-light { --tripp-color-on-primary-rgb: 16, 16, 16; --tripp-color-secondary-rgb: 192,175,255; --tripp-color-on-secondary-rgb: 16, 16, 16; --tripp-color-on-surface-rgb: 16, 16, 16; }
       </style>
-        <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/top10hotel/images/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/top10hotel/images/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/top10hotel/images/favicon-16x16.png">
-        <link rel="manifest" href="/wp-content/themes/top10hotel/images/site.webmanifest">
-        <link rel="mask-icon" href="/wp-content/themes/top10hotel/images/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="shortcut icon" href="/wp-content/themes/top10hotel/images/favicon.ico">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-config" content="/wp-content/themes/top10hotel/images/browserconfig.xml">
+        <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/top10hotel/images/apple-touch-icon.png?v=2">
+        <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/top10hotel/images/favicon-32x32.png?v=2">
+        <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/top10hotel/images/favicon-16x16.png?v=2">
+        <link rel="manifest" href="/wp-content/themes/top10hotel/images/site.webmanifest?v=2">
+        <link rel="mask-icon" href="/wp-content/themes/top10hotel/images/safari-pinned-tab.svg?v=2" color="#5bbad5">
+        <link rel="shortcut icon" href="/wp-content/themes/top10hotel/images/favicon.ico?v=2">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-config" content="/wp-content/themes/top10hotel/images/browserconfig.xml?v=2">
         <meta name="theme-color" content="#ffffff">
         
 
@@ -851,8 +851,8 @@
             <div class="main-menu">
                <div class="menu-content">
                     <div class="site-logo">
-                        <a href="<?php echo  pll_home_url();?>" class="custom-logo-link" rel="home" aria-current="page"><img width="120" height="64" src="/wp-content/themes/top10hotel/images/logo.png" class="custom-logo" alt="logo Top 10 hotel" decoding="async" srcset="/wp-content/themes/top10hotel/images/logo.png 1x, /wp-content/themes/top10hotel/images/logo-x2.png 2x" /></a>
-                        <a href="<?php echo  pll_home_url();?>" class="light-logo-link" rel="home" aria-current="page"><img width="120" height="64" src="/wp-content/themes/top10hotel/images/logo-light.png" class="light-logo" alt="logo Top 10 hotel" decoding="async" srcset="/wp-content/themes/top10hotel/images/logo-light.png 1x, /wp-content/themes/top10hotel/images/logo-light-x2.png 2x" /></a>
+                        <a href="<?php echo  pll_home_url();?>" class="custom-logo-link" rel="home" aria-current="page"><img width="120" height="64" src="/wp-content/themes/top10hotel/images/logo.png?v=2" class="custom-logo" alt="logo Top 10 hotel" decoding="async" srcset="/wp-content/themes/top10hotel/images/logo.png?v=2 1x, /wp-content/themes/top10hotel/images/logo-x2.png?v=2 2x" /></a>
+                        <a href="<?php echo  pll_home_url();?>" class="light-logo-link" rel="home" aria-current="page"><img width="120" height="64" src="/wp-content/themes/top10hotel/images/logo-light.png?v=2" class="light-logo" alt="logo Top 10 hotel" decoding="async" srcset="/wp-content/themes/top10hotel/images/logo-light.png?v=2 1x, /wp-content/themes/top10hotel/images/logo-light-x2.png?v=2 2x" /></a>
                         <h1><span class="screen-reader-text"><?php echo get_bloginfo( 'name' ) ;?></span></h1>
                     </div>
                     <nav id="site-navigation" class="main-navigation">

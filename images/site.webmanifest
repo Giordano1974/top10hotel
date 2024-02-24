@@ -3,12 +3,12 @@
     "short_name": "Top 10 Hotel",
     "icons": [
         {
-            "src": "/wp-content/themes/top10hotel/images/android-chrome-192x192.png",
+            "src": "/wp-content/themes/top10hotel/images/android-chrome-192x192.png?v=2",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/wp-content/themes/top10hotel/images/android-chrome-256x256.png",
+            "src": "/wp-content/themes/top10hotel/images/android-chrome-256x256.png?v=2",
             "sizes": "256x256",
             "type": "image/png"
         }

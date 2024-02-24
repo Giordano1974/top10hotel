@@ -49,7 +49,7 @@
             </div>
             <div class="site-info">
                <div class="footer-text">
-                  <span class="footer-copyright">© 2023 powered by Top10hotel.</span>
+                  <span class="footer-copyright">© 2023 powered by Top10hotel. <a href="mailto:info@top10hotel.it" target="_blank" title="contatta top10hotel">info@top10hotel.it</a></span>
                </div>
                <div class="footer-contact-info">
                   <div class="footer-social-links">
