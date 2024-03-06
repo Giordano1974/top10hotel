@@ -759,14 +759,14 @@
       <style id='tripp-inline-css'>
          :root, .has-scheme-light, .flext-has-scheme-light { --tripp-color-on-primary-rgb: 16, 16, 16; --tripp-color-secondary-rgb: 192,175,255; --tripp-color-on-secondary-rgb: 16, 16, 16; --tripp-color-on-surface-rgb: 16, 16, 16; }
       </style>
-        <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/top10hotel/images/apple-touch-icon.png?v=2">
-        <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/top10hotel/images/favicon-32x32.png?v=2">
-        <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/top10hotel/images/favicon-16x16.png?v=2">
-        <link rel="manifest" href="/wp-content/themes/top10hotel/images/site.webmanifest?v=2">
-        <link rel="mask-icon" href="/wp-content/themes/top10hotel/images/safari-pinned-tab.svg?v=2" color="#5bbad5">
-        <link rel="shortcut icon" href="/wp-content/themes/top10hotel/images/favicon.ico?v=2">
+        <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/top10hotel/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/top10hotel/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/top10hotel/images/favicon-16x16.png">
+        <link rel="manifest" href="/wp-content/themes/top10hotel/images/site.webmanifest">
+        <link rel="mask-icon" href="/wp-content/themes/top10hotel/images/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/wp-content/themes/top10hotel/images/favicon.ico">
         <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-config" content="/wp-content/themes/top10hotel/images/browserconfig.xml?v=2">
+        <meta name="msapplication-config" content="/wp-content/themes/top10hotel/images/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
         
 
