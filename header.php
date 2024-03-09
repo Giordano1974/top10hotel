@@ -9,15 +9,15 @@
         <link rel="stylesheet" href="/wp-content/themes/top10hotel/css/style.css?v=4" media="all" data-minify="1" />
       </noscript>
       <meta name='robots' content='max-image-preview:large' />
-      <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLSJ8RD444"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+	   <!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-3R4TXCD3F1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
 
-            gtag('config', 'G-VLSJ8RD444');
-        </script>
+		  gtag('config', 'G-3R4TXCD3F1');
+		</script>
       <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
