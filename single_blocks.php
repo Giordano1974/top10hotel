@@ -18,7 +18,7 @@ if (have_posts()) :
 ?>
 
             <main id="site-content" class="main-content">
-                <article id="post-<?php echo $post->ID ?>" class="post-<?php echo $post->ID ?> post type-post has-post-thumbnail hentry entry single-entry">
+                <article id="post-<?php echo $post->ID ?>" class="post-<?php echo $post->ID ?> post type-post has-post-thumbnail entry single-entry">
                     <header class="has-gradient-overlay page-header entry-header single-entry-header alignfull parallax-background">
                         <div class="entry-media single-entry-media">
                             <div class="post-thumbnail header-background">
