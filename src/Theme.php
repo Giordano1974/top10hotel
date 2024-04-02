@@ -26,6 +26,7 @@ class Theme {
         add_image_size('mia_vert', 480, 640, true); 
  
         add_image_size('mia_article', 780);
+        add_image_size('mia_article_mobile', 480);
 
         add_image_size('mia_square_large', 720, 720, true);
         add_image_size('mia_square_small', 150, 150, true);

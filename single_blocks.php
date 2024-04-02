@@ -115,7 +115,11 @@ if (have_posts()) :
                                                                     <?php foreach( $photogallery as $image ): ?>
                                                                     <div class="flext-slide">
                                                                         <figure>
-                                                                            <img decoding="async" loading="lazy" width="724" height="543" src="<?php echo $image["sizes"]["mia_article"]; ?>" alt="<?php echo $image["alt"] ?>"/>
+                                                                            <img decoding="async" loading="lazy" width="480" height="360" src="<?php echo $image["sizes"]["mia_article_mobile"]; ?>"
+                                                                                srcset="<?php echo $image["sizes"]["mia_article"]; ?> 780w",
+                                                                                sizes="100vw"
+                                                                                alt="<?php echo $image["alt"] ?>" 
+                                                                            />
                                                                         </figure>
                                                                     </div>
                                                                     <?php endforeach; ?>
@@ -268,7 +272,7 @@ if (have_posts()) :
                             <?php if (get_previous_post()): ?>
                                 <div class="nav-thumbnail">
                                     <a href="<?php echo get_permalink(get_previous_post()->ID); ?>">
-                                        <?php echo get_the_post_thumbnail(get_previous_post()->ID, 'thumbnail'); ?>
+                                        <?php echo get_the_post_thumbnail(get_previous_post()->ID, 'thumbnail', ['loading' => 'lazy']); ?>
                                     </a>
                                 </div>
                                 <div class="nav-text">
@@ -298,7 +302,7 @@ if (have_posts()) :
                             <?php if (get_next_post()): ?>
                                 <div class="nav-thumbnail">
                                     <a href="<?php echo get_permalink(get_next_post()->ID); ?>">
-                                        <?php echo get_the_post_thumbnail(get_next_post()->ID, 'thumbnail'); ?>
+                                        <?php echo get_the_post_thumbnail(get_next_post()->ID, 'thumbnail', ['loading' => 'lazy']); ?>
                                     </a>
                                 </div>
                                 <div class="nav-text">

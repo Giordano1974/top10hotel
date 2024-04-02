@@ -531,4 +531,8 @@ button.ispirami {
     .hotel-item__description.has-read-more + .cta-container .text-read-more  {
         margin: 0 auto 20px auto;
     }
+
+    h1 + .description {
+        font-size: 18px;
+    }
 }

@@ -187,7 +187,7 @@ if (have_posts()) :
                             <?php if (get_previous_post()): ?>
                                 <div class="nav-thumbnail">
                                     <a href="<?php echo get_permalink(get_previous_post()->ID); ?>">
-                                        <?php echo get_the_post_thumbnail(get_previous_post()->ID, 'thumbnail'); ?>
+                                        <?php echo get_the_post_thumbnail(get_previous_post()->ID, 'thumbnail', ['loading' => 'lazy']); ?>
                                     </a>
                                 </div>
                                 <div class="nav-text">
@@ -217,7 +217,7 @@ if (have_posts()) :
                             <?php if (get_next_post()): ?>
                                 <div class="nav-thumbnail">
                                     <a href="<?php echo get_permalink(get_next_post()->ID); ?>">
-                                        <?php echo get_the_post_thumbnail(get_next_post()->ID, 'thumbnail'); ?>
+                                        <?php echo get_the_post_thumbnail(get_next_post()->ID, 'thumbnail', ['loading' => 'lazy']); ?>
                                     </a>
                                 </div>
                                 <div class="nav-text">

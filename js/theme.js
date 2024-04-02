@@ -1619,7 +1619,7 @@ if(this.DOM.resultsList===null){this.DOM.resultsList=document.createElement('div
 if(this.DOM.moreButton===null){this.DOM.moreButton=document.createElement('div');this.DOM.moreButton.classList.add('search-more');this.DOM.el.append(this.DOM.moreButton)}
 flextension.emit('liveSearch.createResults');this.updateSearchList();window.addEventListener('resize',flextension.debounce(()=>{this.updateSearchList()},300))}
 updateSearchList(){flextension.emit('liveSearch.updateResults')}
-getListItems(name,items){const list=document.createElement('ul');list.classList.add('flext-list');list.setAttribute('id',name.toLowerCase()+'-search-list');let showThumbnail=!1;let showAuthor=!1;let showDate=!1;items.forEach(item=>{let thumbnail='';if(item.thumbnail){showThumbnail=!0;thumbnail='<img src="'+item.thumbnail+'" alt="'+item.title+'" height="150" width="150" />'}else{thumbnail='<i class="flext-ico-article"></i>'}
+getListItems(name,items){const list=document.createElement('ul');list.classList.add('flext-list');list.setAttribute('id',name.toLowerCase()+'-search-list');let showThumbnail=!1;let showAuthor=!1;let showDate=!1;items.forEach(item=>{let thumbnail='';if(item.thumbnail){showThumbnail=!0;thumbnail='<img src="'+item.thumbnail+'" alt="'+item.title+'" height="150" width="150" loading="lazy" />'}else{thumbnail='<i class="flext-ico-article"></i>'}
 thumbnail='<span class="item-thumbnail">'+thumbnail+'</span>';let author='';if(item.author){showAuthor=!0;author='<span>'+item.author+'</span> '}
 let date='';if(item.date){showDate=!0;date='<span>'+item.date+'</span> '}
 let description='';if(author||date){description='<span class="item-meta">'+date+'</span>'}
