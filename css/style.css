@@ -327,6 +327,20 @@ header.main-header:not(.is-menu-visible) .main-menu {
 .hotel-cta {
 	background-color: #83d1dc;
 	text-transform: uppercase;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    padding: 14px 16px;
+    border: 0;
+    line-height: 24px;
+    transition: all ease-out 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hotel-cta svg {
+	height: 24px;
 }
 
 .hotel-cta:hover {
