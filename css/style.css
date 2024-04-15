@@ -96,61 +96,7 @@ table {
     scrollbar-width: none
 }
 
-@font-face {
-    font-display: swap;
-    font-family: flextension;
-    font-style: normal;
-    font-weight: 400;
-    src: url(../fonts/flextension.woff) format("woff")
-}
 
-@font-face {
-    font-display: swap;
-    font-family: roboto slab;
-    font-style: normal;
-    font-weight: 300;
-    src: local(""), url(../fonts/roboto-slab-300.woff2) format("woff2"), url(../fonts/roboto-slab-300.woff) format("woff")
-}
-
-@font-face {
-    font-display: swap;
-    font-family: roboto slab;
-    font-style: normal;
-    font-weight: 400;
-    src: local(""), url(../fonts/roboto-slab-regular.woff2) format("woff2"), url(../onts/roboto-slab-regular.woff) format("woff")
-}
-
-@font-face {
-    font-display: swap;
-    font-family: roboto slab;
-    font-style: normal;
-    font-weight: 600;
-    src: local(""), url(../fonts/roboto-slab-600.woff2) format("woff2"), url(../fonts/roboto-slab-600.woff) format("woff")
-}
-
-@font-face {
-    font-display: swap;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 300;
-    src: local(""), url(../fonts/inter-300.woff2) format("woff2"), url(../fonts/inter-300.woff) format("woff")
-}
-
-@font-face {
-    font-display: swap;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 400;
-    src: local(""), url(../fonts/inter-regular.woff2) format("woff2"), url(../fonts/inter-regular.woff) format("woff")
-}
-
-@font-face {
-    font-display: swap;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 700;
-    src: local(""), url(../fonts/inter-700.woff2) format("woff2"), url(../fonts/inter-700.woff) format("woff")
-}
 
 [class*=" flext-ico-"]:before,
 [class^=flext-ico-]:before {
@@ -12203,13 +12149,6 @@ big {
     font-size: 125%
 }
 
-@font-face {
-    font-display: swap;
-    font-family: tripp;
-    font-style: normal;
-    font-weight: 400;
-    src: url(../fonts/tripp.woff) format("woff")
-}
 
 [class*=" tripp-ico-"]::before,
 [class^=tripp-ico-]::before {
