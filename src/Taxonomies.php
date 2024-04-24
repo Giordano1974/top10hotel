@@ -112,7 +112,7 @@ class Taxonomies {
                 'assign_terms' => 'edit_posts',
             ),
         ]);
-        
+        flush_rewrite_rules();
     }
 
 }
