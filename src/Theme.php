@@ -112,7 +112,18 @@ class Theme {
 
     function my_custom_script() {
         // Registra lo script
-        wp_register_script('my-script', get_template_directory_uri() . '/js/custom.js', array(), null, true);
+        //wp_register_script('my-script', get_template_directory_uri() . '/js/custom.js', array(), null, true);
+
+        wp_register_script( 
+            'my-script', 
+            get_template_directory_uri() . '/js/custom.js', 
+            array(), 
+            '1.0.0', 
+            array(
+                'in_footer' => true,
+                'strategy'  => 'async',
+            )
+            );
     
         // Enqueue lo script
         wp_enqueue_script('my-script');
