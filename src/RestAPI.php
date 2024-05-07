@@ -23,7 +23,7 @@ class RestAPI {
 
         $taxonomy = $request->get_param( 'taxonomy' );
         $term_id = $request->get_param( 'term' );
-        $columns = $request->get_param( 'columns' );
+        $columns = -1; //$request->get_param( 'columns' );
 
         $query_args = [
             'post_type' => 'post',
