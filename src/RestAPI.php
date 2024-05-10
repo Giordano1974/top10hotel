@@ -8,6 +8,7 @@ class RestAPI {
 
     function __construct() {
         add_action( 'rest_api_init',  [$this, 'rest_api_function'] );
+        
 	}
  
     
@@ -17,13 +18,17 @@ class RestAPI {
             'methods' => 'GET',
             'callback' => [$this, 'mega_menu_func'],
         ));
+        register_rest_route('tripp-xt/v1', '/random_post', array(
+            'methods' => 'GET',
+            'callback' => [$this, 'random_post']
+        ));
     } 
 
     function mega_menu_func( $request ) {
 
         $taxonomy = $request->get_param( 'taxonomy' );
         $term_id = $request->get_param( 'term' );
-        $columns = $request->get_param( 'columns' );
+        $columns = -1; //$request->get_param( 'columns' );
 
         $query_args = [
             'post_type' => 'post',
@@ -64,6 +69,35 @@ class RestAPI {
         ];
 
         return rest_ensure_response($output);
+      
+    }
+
+    function random_post( $request ) {
+        $language = $request->get_param( 'lang' );
+
+        $columns = -1; //$request->get_param( 'columns' );
+
+        $args = array(
+            'post_type'      => 'post',
+            'post_status'    => 'publish',
+            'posts_per_page' => 1,
+            'orderby'        => 'rand', // Otteniamo un post casuale
+            'lang'           => $language, // Passiamo la lingua come argomento alla query
+        );
+        $query = new WP_Query($args);
+
+        wp_reset_postdata();
+        
+        // Verifichiamo se il post è stato trovato
+        if ($query->have_posts()) {
+            // Restituiamo i dettagli del post casuale
+            return rest_ensure_response(["link" => get_permalink($query->posts[0]->ID)]);
+        } else {
+            return new WP_Error('post_not_found', 'Impossibile trovare il post casuale.', ['status' => 404]);
+        }
+
+        
+
       
     }
 
